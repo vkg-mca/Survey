@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Survey.Model\Survey.Model.csproj" />
+    <ProjectReference Include="..\Survey.Publisher\Survey.Publisher.csproj" />
+    <ProjectReference Include="..\SurveyRepository\Survey.Repository.csproj" />
+  </ItemGroup>
+
+
+</Project>
