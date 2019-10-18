@@ -29,16 +29,14 @@ namespace Survey.Test
 
         public async Task TestGetSurvey(int surveyId, SurveyModel survey)
         {
-            var mockSender = new Mock<ISurveySender>(MockBehavior.Loose );
+            var mockSender = new Mock<ISurveySender>(MockBehavior.Loose);
             var mockLogger = new Mock<ILogger<SurveyController>>(MockBehavior.Loose);
-
             var mockRepo = new Mock<ISurveyRepository>(MockBehavior.Loose);
             mockRepo.Setup(repo => repo.GetSurvey(surveyId));
 
             var controller = new SurveyController(mockRepo.Object, mockLogger.Object, mockSender.Object);
             var actual = await controller.CreateSurvey(survey).ConfigureAwait(false);
             Assert.NotNull(actual);
-
 
         }
     }
