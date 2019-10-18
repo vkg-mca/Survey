@@ -16,6 +16,7 @@ namespace Survey.Api.Controllers
         private readonly ISurveyRepository _repository;
         private readonly ILogger<SurveyController> _logger;
         private readonly ISurveySender _sender;
+
         public SurveyController(ISurveyRepository repository,
                              ILogger<SurveyController> logger,
                              ISurveySender sender)
@@ -24,35 +25,41 @@ namespace Survey.Api.Controllers
             _logger = logger;
             _sender = sender;
         }
+
         [HttpPost]
-        public async Task<ActionResult> CreateSurvey([FromBody] SurveyModel model)
+        [Route("CreateSurvey")]
+        public async Task<ActionResult> CreateSurvey([FromBody] SurveyModel survey)
         {
             var result = await _repository
-                .Create(model)
+                .Create(survey)
                 .ConfigureAwait(false);
-            _logger.LogInformation($"Survey created with Id={model.SurveyId }");
+            _logger.LogInformation($"Survey created with Id={survey.SurveyId }");
             return Ok(result);
         }
+
         [HttpPost]
-        public async Task<ActionResult> SendSurvey(SendSurveyModel model)
+        [Route("SendSurvey")]
+        public async Task<ActionResult> SendSurvey([FromBody] SendSurveyModel model)
         {
             var survey = await _repository.GetSurvey(model.SurveyId).ConfigureAwait(false);
-            _logger.LogInformation($"Survey retrieved with Id={model.SurveyId }");
-            var sentResult = _sender.SendSurvey(survey, model.SurveyRecepientId);
-            _logger.LogInformation($"Survey sent with Id={model.SurveyId } to sender ={model.SurveyRecepientId}");
+            _logger.LogInformation($"Survey retrieved with Id={survey.SurveyId }");
+            var sentResult = await _sender.SendSurvey(model, model.SurveyRecepientId);
+            _logger.LogInformation($"Survey sent with Id={survey.SurveyId } to sender ={model.SurveyRecepientId}");
             return Ok(sentResult);
         }
 
         [HttpPost]
-        public async Task<ActionResult> RecorddSurvey(RecordSurveyModel model)
+        [Route("RecordSurvey")]
+        public async Task<ActionResult> RecorddSurvey([FromBody] RecordSurveyModel survey)
         {
-            var result = await _repository.RecordSurvey(model).ConfigureAwait(false);
-            _logger.LogInformation($"Survey recorded with Id={model.SurveyId }");
+            var result = await _repository.RecordSurvey(survey).ConfigureAwait(false);
+            _logger.LogInformation($"Survey recorded with Id={survey.SurveyId }");
 
             return Ok(result);
         }
 
         [HttpGet]
+        [Route("AnalyseSurvey/{SurveyId}")]
         public async Task<ActionResult> AnalyseSurvey(int SurveyId)
         {
             var avg = await _repository.GetAverage(SurveyId).ConfigureAwait(false);

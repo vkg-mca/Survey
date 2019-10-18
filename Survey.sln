@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Survey.Publisher", "Survey.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Survey.Model", "Survey.Model\Survey.Model.csproj", "{D415221A-CD61-4C71-B6E8-61C2E4B39818}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Survey.Test", "Survey.Test\Survey.Test.csproj", "{69DBF19E-C8C2-416F-AEEA-B66742AF68CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D415221A-CD61-4C71-B6E8-61C2E4B39818}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D415221A-CD61-4C71-B6E8-61C2E4B39818}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D415221A-CD61-4C71-B6E8-61C2E4B39818}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69DBF19E-C8C2-416F-AEEA-B66742AF68CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69DBF19E-C8C2-416F-AEEA-B66742AF68CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69DBF19E-C8C2-416F-AEEA-B66742AF68CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69DBF19E-C8C2-416F-AEEA-B66742AF68CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

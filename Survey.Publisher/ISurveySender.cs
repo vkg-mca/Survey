@@ -1,7 +1,10 @@
-﻿namespace Survey.Publisher
+﻿using System.Threading.Tasks;
+using Survey.Model;
+
+namespace Survey.Publisher
 {
     public interface ISurveySender
     {
-        object SendSurvey(object survey, object surveyRecepient);
+        Task<int> SendSurvey(SendSurveyModel survey, int surveyRecepient);
     }
 }
